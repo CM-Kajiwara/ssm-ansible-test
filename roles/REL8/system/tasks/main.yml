@@ -1,0 +1,6 @@
+
+- name: install libidn
+  yum:
+    name: libidn
+    state: present
+    update_cache: yes

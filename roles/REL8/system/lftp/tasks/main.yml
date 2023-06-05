@@ -1,0 +1,6 @@
+
+- name: install lftp
+  yum:
+    name: lftp
+    state: present
+    update_cache: yes

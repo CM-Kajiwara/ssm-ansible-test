@@ -1,0 +1,6 @@
+
+- name: install nodejs 
+  yum:
+    name: "@nodejs:14"
+    state: present
+    update_cache: yes

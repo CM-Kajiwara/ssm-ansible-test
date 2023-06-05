@@ -1,0 +1,8 @@
+---
+- name: libselinux-python installed
+  yum:
+    name: libselinux-python
+
+- name: SELinux disabled
+  selinux:
+    state: disabled

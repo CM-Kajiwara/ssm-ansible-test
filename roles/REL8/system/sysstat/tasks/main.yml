@@ -1,0 +1,13 @@
+
+- name: install sysstat 
+  yum:
+    name: sysstat
+    state: present
+    update_cache: yes
+- name: restart sysstat 
+  systemd:
+    name: sysstat
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  become: yes

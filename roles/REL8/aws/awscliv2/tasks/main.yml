@@ -1,0 +1,16 @@
+
+- name: packages installed
+  yum:
+    name:
+      - unzip
+
+- name: Download awscliv2 & unzip
+  unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: .
+    remote_src: yes
+  ignore_errors: yes
+
+- name: install
+  command: ./aws/install --update
+  become: yes

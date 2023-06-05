@@ -1,0 +1,6 @@
+
+- name: install libnsl.x86_64
+  dnf:
+    name: libnsl.x86_64
+    state: present
+    update_cache: yes

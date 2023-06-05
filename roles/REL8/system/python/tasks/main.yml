@@ -1,0 +1,6 @@
+
+- name: install python 
+  yum:
+    name: python38
+    state: present
+    update_cache: yes

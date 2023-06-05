@@ -1,0 +1,22 @@
+# 
+# mecd.yml
+# export ANSIBLE_CONFIG=./ansible.cfg
+# ansible -i hosts all -m ping
+# ansible-playbook mecd.yml --check
+
+- name: Informatica Secure Agent Setup
+  hosts:  all
+  roles:
+    - aws/awscliv2
+    - system/lang
+    - system/timezone
+    - system/chrony
+    - system/python
+    - system/sysstat
+    - system/hostname
+    - system/yumupdate
+    - system/selinux
+    - system/jq
+    - system/libidn
+    - system/libnsl_86_64
+    - infa/user

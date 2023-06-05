@@ -1,0 +1,43 @@
+---
+- name: "group: infa"
+  group:
+    gid: 1003
+    name: infa
+
+- name: "user: infa"
+  user:
+    uid: 1003
+    name: infa
+    group: infa
+
+- name: "infa user add sudo"
+  lineinfile:
+    dest: /etc/sudoers
+    line: 'infa ALL=(ALL) NOPASSWD: ALL'
+
+- pam_limits:
+    domain: infa
+    limit_type: '-'
+    limit_item: nofile
+    value: 65536
+
+- pam_limits:
+    domain: infa
+    limit_type: '-'
+    limit_item: core
+    value: unlimited
+
+- pam_limits:
+    domain: infa
+    limit_type: '-'
+    limit_item: nproc
+    value: 65536
+
+# - name: set umask
+#   lineinfile: dest=/home/infa/.bashrc line="umask 0022"
+
+# - name: set LANG
+#   lineinfile: dest=/home/infa/.bashrc line="export LANG=en_US.UTF8"
+
+# - name: set LC_ALL
+#   lineinfile: dest=/home/infa/.bashrc line="export LC_ALL=en_US.UTF8"

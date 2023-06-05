@@ -1,0 +1,19 @@
+---
+- name: install langupack
+  yum:
+    name: langpacks-ja
+    state: present
+    update_cache: yes
+- name: "set LANG={{ system_lang }} in /etc/locale.conf"
+  lineinfile:
+    state: present
+    dest: /etc/locale.conf
+    regexp: '^LANG=.*'
+    line: 'LANG={{ system_lang }}'
+
+- name: "set LANG={{ system_lang }} in /etc/cloud/cloud.cfg"
+  lineinfile:
+    state: present
+    dest: /etc/cloud/cloud.cfg
+    regexp: '^locale'
+    line: 'locale: {{ system_lang }}'

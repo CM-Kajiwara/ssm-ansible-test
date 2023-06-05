@@ -1,0 +1,19 @@
+---
+- name: install chrony
+  yum:
+    name: chrony
+    state: present
+    update_cache: yes
+
+- name: set chrony in /etc/chrony.conf
+  replace:
+    dest: /etc/chrony.conf
+    regexp: "rhel.pool.ntp.org"
+    replace: "amazon.pool.ntp.org"
+    backup: yes
+  when: chrony_replace_chrony_server_to_amazon
+
+- name: Restart chrony
+  service:
+    name: chronyd
+    state: restarted

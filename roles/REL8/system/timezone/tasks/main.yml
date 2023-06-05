@@ -1,0 +1,9 @@
+---
+- name: "set timezone to {{ system_timezone }}"
+  timezone:
+    name: "{{ system_timezone }}"
+
+- name: "{{ crond_service }} service restarted"
+  systemd:
+    name: "{{ crond_service }}"
+    state: restarted
